@@ -8,4 +8,4 @@ Primary.args = {
   text: 'next',
 };
 
-export default { title: 'Primary button', component: Wrapper } as Meta;
+export default { title: 'Button', component: Wrapper } as Meta;
