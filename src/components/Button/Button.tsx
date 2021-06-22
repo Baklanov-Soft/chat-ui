@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Button = styled.button`
+const Wrapper = styled.button`
   height: 30px;
   width: 110px;
   font-family: 'Roboto', sans-serif;
@@ -10,6 +10,7 @@ const Button = styled.button`
   background-color: #0077c2;
   color: #ffffff;
   letter-spacing: 1px;
+  cursor: pointer;
   &:hover {
     background-color: #1492e1;
   }
@@ -22,6 +23,6 @@ export type ButtonProps = {
   text: string;
 };
 
-export function Wrapper({ text }: ButtonProps) {
-  return <Button>{text.toUpperCase()}</Button>;
+export function Button({ text }: ButtonProps) {
+  return <Wrapper>{text.toUpperCase()}</Wrapper>;
 }
