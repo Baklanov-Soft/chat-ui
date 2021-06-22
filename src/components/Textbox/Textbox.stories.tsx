@@ -16,6 +16,6 @@ Error.args = {
 };
 
 export default {
-  title: 'Texbox',
+  title: 'Textbox',
   component: Textbox,
 } as Meta;

@@ -7,7 +7,7 @@ const Wrapper = styled.div`
   width: 230px;
 `;
 
-const Input = styled.input<TextblockProps>`
+const Input = styled.input<{ error?: boolean }>`
   border-radius: 2px;
   padding: 4px 16px;
   ${({ error }) =>
@@ -51,7 +51,7 @@ export type TextblockProps = {
 export function Textbox({ placeholder, error, helperText }: TextblockProps) {
   return (
     <Wrapper>
-      <Input type="input" placeholder={placeholder} error={error} />
+      <Input type="text" placeholder={placeholder} error={error} />
       {error && (
         <MessageHelper>
           <Sign>
