@@ -3,12 +3,12 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div<{ selected: boolean }>`
   display: flex;
-  align-items: center;
-  padding: 8px;
   width: 350px;
-  cursor: pointer;
+  padding: 8px;
+  ${({ selected }) => selected && `background-color: #808d94; color: #ffffff;`}
+  border-radius: 2px;
   font-size: 16px;
-  ${({ selected }) => selected && `background-color: #808d94;color: #ffffff;`}
+  cursor: pointer;
   &:hover {
     background-color: #e1eff7;
     ${({ selected }) => selected && `color: #000000;`}
@@ -19,7 +19,7 @@ const AvatarWrapper = styled.div<
   { dim: string } & Omit<CSSProperties, 'width' | 'height'>
 >`
   flex: 0 0 ${({ dim }) => dim};
-  margin-right: 8px;
+  padding: 8px;
   img {
     width: ${({ dim }) => dim};
     height: ${({ dim }) => dim};
@@ -27,39 +27,33 @@ const AvatarWrapper = styled.div<
   }
 `;
 
-const GroupNameWrapper = styled.div`
+const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   min-width: 0;
-  div {
-    padding: 8px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
 `;
 
-const TimeStampWrapper = styled.div`
+const RowWrapper = styled.div`
   display: flex;
-  flex: 0 0 100px;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-end;
-  div {
-    padding: 8px;
-  }
+  justify-content: space-between;
+  padding: 4px;
 `;
 
-const UnreadedWrapper = styled.div`
+const TruncatedTextWrapper = styled.span`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
+const UnreadedWrapper = styled.span`
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+  text-align: center;
   background-color: #808d94;
   border-radius: 50%;
-  width: 12px;
-  height: 12px;
-  line-height: 12px;
-  text-align: center;
   color: #ffffff;
-  margin-right: 8px;
 `;
 
 export type GroupEntryProps = {
@@ -72,7 +66,7 @@ export type GroupEntryProps = {
     text: string;
     ts: Date;
   };
-  unreaded: number;
+  unreaded?: number;
 };
 
 export function GroupEntry({
@@ -89,19 +83,21 @@ export function GroupEntry({
       <AvatarWrapper dim="60px">
         <img alt="" src={avatar} />
       </AvatarWrapper>
-      <GroupNameWrapper>
-        <div>{title}</div>
-        <div>{text}</div>
-      </GroupNameWrapper>
-      <TimeStampWrapper>
-        <div>
-          {ts.toLocaleTimeString(navigator.language, {
-            hour: '2-digit',
-            minute: '2-digit',
-          })}
-        </div>
-        {!selected && unreaded && <UnreadedWrapper>3</UnreadedWrapper>}
-      </TimeStampWrapper>
+      <ContentWrapper>
+        <RowWrapper>
+          <TruncatedTextWrapper>{title}</TruncatedTextWrapper>
+          <span>
+            {ts.toLocaleTimeString(navigator.language, {
+              hour: '2-digit',
+              minute: '2-digit',
+            })}
+          </span>
+        </RowWrapper>
+        <RowWrapper>
+          <TruncatedTextWrapper>{text}</TruncatedTextWrapper>
+          <UnreadedWrapper>{unreaded}</UnreadedWrapper>
+        </RowWrapper>
+      </ContentWrapper>
     </Wrapper>
   );
 }

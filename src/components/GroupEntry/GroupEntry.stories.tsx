@@ -18,6 +18,20 @@ Primary.args = {
   id: 1,
 };
 
+export const Selected = Template.bind({});
+Selected.args = {
+  title: 'CSS lovers',
+  avatar:
+    'https://2.bp.blogspot.com/-h1CQoRzhz1U/WlCLjnSurrI/AAAAAAAC68U/Kds5_SHPQsEI7UqNaixC1CZT6CbqjhOHgCLcBGAs/s1600/image.jpg',
+  lastMessage: {
+    text:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, natus!',
+    ts: new Date(1624455311),
+  },
+  selected: true,
+  id: 2,
+};
+
 export default {
   title: 'Group entry',
   component: GroupEntry,

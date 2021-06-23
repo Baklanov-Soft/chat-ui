@@ -1,5 +1,5 @@
 import { Meta, Story } from '@storybook/react';
-import { ButtonProps, Button } from './Button';
+import { Button, ButtonProps } from './Button';
 
 const Template: Story<ButtonProps> = (args) => <Button {...args} />;
 
@@ -8,4 +8,7 @@ Primary.args = {
   text: 'next',
 };
 
-export default { title: 'Button', component: Button } as Meta;
+export default {
+  title: 'Button',
+  component: Button,
+} as Meta;

@@ -11,8 +11,7 @@ const Wrapper = styled.div`
 const AvatarWrapper = styled.div<
   { dim: string } & Omit<CSSProperties, 'width' | 'height'>
 >`
-  flex: 0 0 ${({ dim }) => dim};
-  margin: 8px;
+  padding: 8px;
   img {
     width: ${({ dim }) => dim};
     height: ${({ dim }) => dim};
@@ -37,7 +36,6 @@ const UserNameWrapper = styled.span`
 `;
 
 export type MessageEntryProps = {
-  id: number;
   avatar: string;
   user: string;
   text: string;
@@ -48,13 +46,7 @@ const MessageWrapper = styled.span`
   padding: 4px;
 `;
 
-export function MessageEntry({
-  id,
-  avatar,
-  user,
-  text,
-  ts,
-}: MessageEntryProps) {
+export function MessageEntry({ avatar, user, text, ts }: MessageEntryProps) {
   return (
     <Wrapper>
       <AvatarWrapper dim="40px">
