@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { EyeToggle } from '../EyeToggle';
-import { ReactComponent as WarnSign } from './warn-sign.svg';
+import { TextboxWarning } from '../TextboxWarning';
 
 const Wrapper = styled.div`
   display: flex;
@@ -37,23 +37,6 @@ const Adornment = styled.div`
   right: 18px;
 `;
 
-const MessageHelper = styled.div`
-  display: flex;
-`;
-
-const Sign = styled.div`
-  margin: 8px;
-  fill: #c31313;
-  width: 17px;
-  height: 15px;
-`;
-
-const Message = styled.div`
-  color: #c31313;
-  font-size: 12px;
-  margin: 8px;
-`;
-
 export type PasswordBoxProps = {
   placeholder?: string;
   error?: boolean;
@@ -82,14 +65,7 @@ export function PasswordBox({
           />
         </Adornment>
       </TextboxWrapper>
-      {error && (
-        <MessageHelper>
-          <Sign>
-            <WarnSign />
-          </Sign>
-          <Message>{helperText}</Message>
-        </MessageHelper>
-      )}
+      {error && helperText && <TextboxWarning text={helperText} />}
     </Wrapper>
   );
 }
