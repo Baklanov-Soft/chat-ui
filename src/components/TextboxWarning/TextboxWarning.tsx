@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import { ReactComponent as WarnSign } from './warn-sign.svg';
 
-const MessageHelper = styled.div`
+const MessageWrapper = styled.div`
   display: flex;
 `;
 
-const Sign = styled.div`
+const WarnSignWrapper = styled.div`
   margin: 8px;
   fill: #c31313;
   width: 17px;
@@ -24,11 +24,11 @@ export type TextboxWarningProps = {
 
 export function TextboxWarning({ text }: TextboxWarningProps) {
   return (
-    <MessageHelper>
-      <Sign>
+    <MessageWrapper>
+      <WarnSignWrapper>
         <WarnSign />
-      </Sign>
+      </WarnSignWrapper>
       <Message>{text}</Message>
-    </MessageHelper>
+    </MessageWrapper>
   );
 }

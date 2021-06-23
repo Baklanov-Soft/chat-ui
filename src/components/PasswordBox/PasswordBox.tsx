@@ -16,6 +16,7 @@ const TextboxWrapper = styled.div`
 const Input = styled.input<{ error?: boolean }>`
   border-radius: 2px;
   padding: 4px 32px 4px 16px;
+  font-size: 14px;
   ${({ error }) =>
     error ? `border: 2px solid #c31313;` : `border: 2px solid #808d94;`}
   ::placeholder {

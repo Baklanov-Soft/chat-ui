@@ -9,8 +9,8 @@ const Toggle = styled.div<
   cursor: pointer;
   display: flex;
   align-items: center;
-  width: ${(p) => p.dim};
-  height: ${(p) => p.dim};
+  width: ${({ dim }) => dim};
+  height: ${({ dim }) => dim};
   fill: #808d94;
 `;
 
