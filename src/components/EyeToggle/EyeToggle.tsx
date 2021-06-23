@@ -1,5 +1,4 @@
 import type { CSSProperties } from 'react';
-import { useState } from 'react';
 import styled from 'styled-components';
 import { ReactComponent as ClosedEye } from './closed-eye.svg';
 import { ReactComponent as OpenEye } from './open-eye.svg';
@@ -16,22 +15,22 @@ const Toggle = styled.div<
 `;
 
 export type EyeToggleProps = {
+  visible: boolean;
   onChangeVisibility?: (visible: boolean) => void;
-  dim?: string;
+  dim: string;
 };
 
-export function EyeToggle({ onChangeVisibility, dim }: EyeToggleProps) {
-  const [visible, setVisible] = useState(false);
-  function handleChangeVisibility() {
-    setVisible((s) => !s);
-    onChangeVisibility?.(visible);
-  }
+export function EyeToggle({
+  visible,
+  onChangeVisibility,
+  dim,
+}: EyeToggleProps) {
   return (
     <Toggle
       role="switch"
       aria-checked={visible}
-      onClick={handleChangeVisibility}
-      dim={dim ?? '18px'}
+      onClick={() => onChangeVisibility?.(!visible)}
+      dim={dim}
     >
       {visible ? <OpenEye /> : <ClosedEye />}
     </Toggle>
