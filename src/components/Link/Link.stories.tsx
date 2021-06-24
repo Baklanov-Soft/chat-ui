@@ -1,16 +1,16 @@
 import { Meta, Story } from '@storybook/react';
-import { Button, ButtonProps } from './Button';
+import { Link, LinkProps } from './Link';
 
-const Template: Story<ButtonProps> = (args) => <Button {...args} />;
+const Template: Story<LinkProps> = (args) => <Link {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-  children: 'next',
+  children: 'Cancel',
 };
 
 export default {
-  title: 'Button',
-  component: Button,
+  title: 'Link',
+  component: Link,
   argTypes: {
     onClick: { action: 'click' },
   },
