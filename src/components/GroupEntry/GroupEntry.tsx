@@ -9,6 +9,7 @@ const Wrapper = styled.div<{ selected: boolean }>`
   border-radius: 2px;
   font-size: 16px;
   cursor: pointer;
+  user-select: none;
   &:hover {
     background-color: #e1eff7;
     ${({ selected }) => selected && `color: #000000;`}
@@ -95,7 +96,9 @@ export function GroupEntry({
         </RowWrapper>
         <RowWrapper>
           <TruncatedTextWrapper>{text}</TruncatedTextWrapper>
-          <UnreadedWrapper>{unreaded}</UnreadedWrapper>
+          {!selected && unreaded && (
+            <UnreadedWrapper>{unreaded}</UnreadedWrapper>
+          )}
         </RowWrapper>
       </ContentWrapper>
     </Wrapper>
