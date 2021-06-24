@@ -1,1 +1,1 @@
-export { Wrapper as Button } from './Button';
+export { Button } from './Button';
