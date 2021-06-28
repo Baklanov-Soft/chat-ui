@@ -6,16 +6,13 @@ import { TextboxWarning } from '../TextboxWarning';
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 230px;
-`;
-
-const TextboxWrapper = styled.div`
+  width: 100%;
   position: relative;
 `;
 
 const Input = styled.input<{ error?: boolean }>`
   border-radius: 2px;
-  padding: 4px 32px 4px 16px;
+  padding: 4px 36px 4px 16px;
   font-size: 14px;
   ${({ error }) =>
     error ? `border: 2px solid #c31313;` : `border: 2px solid #808d94;`}
@@ -35,7 +32,7 @@ const Input = styled.input<{ error?: boolean }>`
 const Adornment = styled.div`
   position: absolute;
   top: 5px;
-  right: 18px;
+  right: 20px;
 `;
 
 export type PasswordBoxProps = {
@@ -52,20 +49,18 @@ export function PasswordBox({
   const [visible, setVisible] = useState(false);
   return (
     <Wrapper>
-      <TextboxWrapper>
-        <Input
-          type={visible ? 'text' : 'password'}
-          placeholder={placeholder}
-          error={error}
+      <Input
+        type={visible ? 'text' : 'password'}
+        placeholder={placeholder}
+        error={error}
+      />
+      <Adornment>
+        <EyeToggle
+          dim="18px"
+          onChangeVisibility={setVisible}
+          visible={visible}
         />
-        <Adornment>
-          <EyeToggle
-            dim="18px"
-            onChangeVisibility={setVisible}
-            visible={visible}
-          />
-        </Adornment>
-      </TextboxWrapper>
+      </Adornment>
       {error && helperText && <TextboxWarning text={helperText} />}
     </Wrapper>
   );

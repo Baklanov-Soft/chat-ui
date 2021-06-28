@@ -4,7 +4,7 @@ import { TextboxWarning } from '../TextboxWarning';
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 230px;
+  width: 100%;
 `;
 
 const Input = styled.input<{ error?: boolean }>`

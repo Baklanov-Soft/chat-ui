@@ -1,4 +1,5 @@
 import { Meta, Story } from '@storybook/react';
+import styled from 'styled-components';
 import { PasswordBox, PasswordBoxProps } from './PasswordBox';
 
 const Template: Story<PasswordBoxProps> = (args) => <PasswordBox {...args} />;
@@ -15,7 +16,18 @@ Error.args = {
   helperText: 'Password mismatch.',
 };
 
+const WidthDecorator = styled.div`
+  width: 230px;
+`;
+
 export default {
   title: 'PasswordBox',
   component: PasswordBox,
+  decorators: [
+    (Story) => (
+      <WidthDecorator>
+        <Story />
+      </WidthDecorator>
+    ),
+  ],
 } as Meta;

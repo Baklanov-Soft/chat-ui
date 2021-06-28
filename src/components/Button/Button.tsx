@@ -20,7 +20,7 @@ const Wrapper = styled.button`
 
 export type ButtonProps = {
   children: string;
-  onClick: () => void;
+  onClick?: () => void;
 };
 
 export function Button({ children, onClick }: ButtonProps) {
