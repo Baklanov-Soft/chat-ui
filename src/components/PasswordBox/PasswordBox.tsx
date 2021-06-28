@@ -41,19 +41,11 @@ export type PasswordBoxProps = {
   helperText?: string;
 };
 
-export function PasswordBox({
-  placeholder,
-  error,
-  helperText,
-}: PasswordBoxProps) {
+export function PasswordBox({ error, helperText, ...rest }: PasswordBoxProps) {
   const [visible, setVisible] = useState(false);
   return (
     <Wrapper>
-      <Input
-        type={visible ? 'text' : 'password'}
-        placeholder={placeholder}
-        error={error}
-      />
+      <Input {...rest} type={visible ? 'text' : 'password'} error={error} />
       <Adornment>
         <EyeToggle
           dim="18px"

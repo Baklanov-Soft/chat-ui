@@ -32,10 +32,10 @@ export type TextblockProps = {
   helperText?: string;
 };
 
-export function Textbox({ placeholder, error, helperText }: TextblockProps) {
+export function Textbox({ error, helperText, ...rest }: TextblockProps) {
   return (
     <Wrapper>
-      <Input type="text" placeholder={placeholder} error={error} />
+      <Input {...rest} type="text" error={error} />
       {error && helperText && <TextboxWarning text={helperText} />}
     </Wrapper>
   );

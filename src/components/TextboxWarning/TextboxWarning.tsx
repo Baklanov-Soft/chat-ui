@@ -3,6 +3,7 @@ import { ReactComponent as WarnSign } from './warn-sign.svg';
 
 const MessageWrapper = styled.div`
   display: flex;
+  align-items: center;
 `;
 
 const WarnSignWrapper = styled.div`
@@ -28,7 +29,7 @@ export function TextboxWarning({ text }: TextboxWarningProps) {
       <WarnSignWrapper>
         <WarnSign />
       </WarnSignWrapper>
-      <Message>{text}</Message>
+      <Message role="alert">{text}</Message>
     </MessageWrapper>
   );
 }

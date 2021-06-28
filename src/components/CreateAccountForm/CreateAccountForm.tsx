@@ -1,7 +1,9 @@
+import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import { Button } from '../Button';
 import { PasswordBox } from '../PasswordBox';
 import { Textbox } from '../Textbox';
+import { resolver } from './resolver';
 
 const Wrapper = styled.form`
   display: flex;
@@ -14,7 +16,7 @@ const Title = styled.span`
   padding: 8px;
 `;
 
-const FormBox = styled.div`
+const FormItem = styled.div`
   padding: 8px;
   width: 100%;
 `;
@@ -24,22 +26,58 @@ const ButtonWrapper = styled.div`
   padding: 16px 0;
 `;
 
+export interface CreateAccountInput {
+  username?: string;
+  email?: string;
+  password1?: string;
+  password2?: string;
+}
+
 export function CreateAccountForm() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<CreateAccountInput>({ resolver, mode: 'onSubmit' });
   return (
-    <Wrapper>
+    <Wrapper onSubmit={handleSubmit((data) => console.log(data))}>
       <Title>Create account</Title>
-      <FormBox>
-        <Textbox placeholder="username" />
-      </FormBox>
-      <FormBox>
-        <Textbox placeholder="email" />
-      </FormBox>
-      <FormBox>
-        <PasswordBox placeholder="password" />
-      </FormBox>
-      <FormBox>
-        <PasswordBox placeholder="confirm" />
-      </FormBox>
+      <FormItem>
+        <Textbox
+          {...register('username')}
+          placeholder="username"
+          error={!!errors.username}
+          helperText={errors.username?.message}
+          aria-invalid={!!errors.username}
+        />
+      </FormItem>
+      <FormItem>
+        <Textbox
+          {...register('email')}
+          placeholder="email"
+          error={!!errors.email}
+          helperText={errors.email?.message}
+          aria-invalid={!!errors.email}
+        />
+      </FormItem>
+      <FormItem>
+        <PasswordBox
+          {...register('password1')}
+          placeholder="password"
+          error={!!errors.password1}
+          helperText={errors.password1?.message}
+          aria-invalid={!!errors.password1}
+        />
+      </FormItem>
+      <FormItem>
+        <PasswordBox
+          {...register('password2')}
+          placeholder="confirm"
+          error={!!errors.password2}
+          helperText={errors.password2?.message}
+          aria-invalid={!!errors.password2}
+        />
+      </FormItem>
       <ButtonWrapper>
         <Button>next</Button>
       </ButtonWrapper>
