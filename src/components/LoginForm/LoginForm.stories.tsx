@@ -21,6 +21,7 @@ export default {
     ),
   ],
   argTypes: {
-    onClick: { action: 'click' },
+    onCreateAccountClick: { action: 'click' },
+    onSubmit: { action: 'click' },
   },
 } as Meta;

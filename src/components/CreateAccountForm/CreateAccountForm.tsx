@@ -26,6 +26,10 @@ const ButtonWrapper = styled.div`
   padding: 16px 0;
 `;
 
+type CreateAccountFormProps = {
+  onSubmit?: (data: CreateAccountInput) => void;
+};
+
 export interface CreateAccountInput {
   username?: string;
   email?: string;
@@ -33,14 +37,14 @@ export interface CreateAccountInput {
   password2?: string;
 }
 
-export function CreateAccountForm() {
+export function CreateAccountForm({ onSubmit }: CreateAccountFormProps) {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<CreateAccountInput>({ resolver, mode: 'onSubmit' });
   return (
-    <Wrapper onSubmit={handleSubmit((data) => console.log(data))}>
+    <Wrapper onSubmit={onSubmit && handleSubmit(onSubmit)}>
       <Title>Create account</Title>
       <FormItem>
         <Textbox

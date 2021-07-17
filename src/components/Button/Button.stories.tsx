@@ -5,7 +5,7 @@ const Template: Story<ButtonProps> = (args) => <Button {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-  children: 'next',
+  children: 'NEXT',
 };
 
 export default {

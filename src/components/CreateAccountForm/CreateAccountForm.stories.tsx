@@ -20,4 +20,7 @@ export default {
       </WidthDecorator>
     ),
   ],
+  argTypes: {
+    onSubmit: { action: 'click' },
+  },
 } as Meta;
