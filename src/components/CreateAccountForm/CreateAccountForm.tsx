@@ -79,7 +79,7 @@ export function CreateAccountForm() {
         />
       </FormItem>
       <ButtonWrapper>
-        <Button>next</Button>
+        <Button>NEXT</Button>
       </ButtonWrapper>
     </Wrapper>
   );
