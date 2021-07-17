@@ -1,5 +1,6 @@
 import { Meta, Story } from '@storybook/react';
 import { MessageEntry, MessageEntryProps } from './MessageEntry';
+import styled from 'styled-components';
 
 const Template: Story<MessageEntryProps> = (args) => <MessageEntry {...args} />;
 
@@ -13,9 +14,20 @@ Primary.args = {
   ts: new Date(1624464230),
 };
 
+const WidthDecorator = styled.div`
+  width: 600px;
+`;
+
 export default {
   title: 'Message entry',
   component: MessageEntry,
+  decorators: [
+    (Story) => (
+      <WidthDecorator>
+        <Story />
+      </WidthDecorator>
+    ),
+  ],
   argTypes: {
     onSelected: { action: 'selection changed' },
   },

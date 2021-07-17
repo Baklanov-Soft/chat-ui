@@ -6,7 +6,7 @@ const MessageWrapper = styled.div`
   align-items: center;
 `;
 
-const WarnSignWrapper = styled.div`
+const WarnSignWrapper = styled(WarnSign)`
   margin: 4px;
   fill: #c31313;
   width: 17px;
@@ -26,9 +26,7 @@ export type TextboxWarningProps = {
 export function TextboxWarning({ text }: TextboxWarningProps) {
   return (
     <MessageWrapper>
-      <WarnSignWrapper>
-        <WarnSign />
-      </WarnSignWrapper>
+      <WarnSignWrapper />
       <Message role="alert">{text}</Message>
     </MessageWrapper>
   );

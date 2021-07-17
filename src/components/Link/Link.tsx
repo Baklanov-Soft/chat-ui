@@ -5,6 +5,7 @@ const ButtonWrapper = styled.button`
   color: #0077c2;
   background: 0;
   border: 0;
+  padding: 0;
   user-select: none;
   cursor: pointer;
   &:hover {

@@ -11,7 +11,7 @@ const WidthDecorator = styled.div`
 `;
 
 export default {
-  title: 'LoginForm',
+  title: 'forms/LoginForm',
   component: LoginForm,
   decorators: [
     (Story) => (

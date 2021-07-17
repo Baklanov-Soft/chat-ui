@@ -11,7 +11,7 @@ const WidthDecorator = styled.div`
 `;
 
 export default {
-  title: 'CreateAccountForm',
+  title: 'forms/CreateAccountForm',
   component: CreateAccountForm,
   decorators: [
     (Story) => (
