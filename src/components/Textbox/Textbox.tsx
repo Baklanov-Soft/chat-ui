@@ -48,6 +48,7 @@ export function Textbox({
   value,
   error,
   helperText,
+  placeholder,
   onChangeText,
   onChange,
   onBlur,
@@ -64,6 +65,7 @@ export function Textbox({
         type="text"
         error={error}
         value={value}
+        placeholder={placeholder}
         onChange={onChangeInternal}
         onBlur={onBlur}
         ref={ref}

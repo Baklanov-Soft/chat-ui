@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import { Button } from '../Button';
@@ -52,7 +53,18 @@ export function LoginForm({ onCreateAccountClick, onSubmit }: LoginFormProps) {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm<LoginInput>();
+  const [login, setLogin] = useState<string>();
+  function updateLogin(value: string) {
+    setLogin(value);
+    setValue('login', value);
+  }
+  const [password, setPassword] = useState<string>();
+  function updatePassword(value: string) {
+    setPassword(value);
+    setValue('password', value);
+  }
   return (
     <Wrapper onSubmit={onSubmit && handleSubmit(onSubmit)}>
       <Title>Login</Title>
@@ -60,6 +72,8 @@ export function LoginForm({ onCreateAccountClick, onSubmit }: LoginFormProps) {
       <FormItem>
         <Textbox
           {...register('login', { required: 'login required' })}
+          onChangeText={(s) => updateLogin(s)}
+          value={login}
           placeholder="login"
           error={!!errors.login}
           helperText={errors.login?.message}
@@ -69,6 +83,8 @@ export function LoginForm({ onCreateAccountClick, onSubmit }: LoginFormProps) {
       <FormItem>
         <PasswordBox
           {...register('password', { required: 'password required' })}
+          onChangePassword={(s) => updatePassword(s)}
+          value={password}
           placeholder="password"
           error={!!errors.password}
           helperText={errors.password?.message}

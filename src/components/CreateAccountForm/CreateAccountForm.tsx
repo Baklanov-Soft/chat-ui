@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import { Button } from '../Button';
@@ -26,7 +27,7 @@ const ButtonWrapper = styled.div`
   padding: 16px 0;
 `;
 
-type CreateAccountFormProps = {
+export type CreateAccountFormProps = {
   onSubmit?: (data: CreateAccountInput) => void;
 };
 
@@ -42,7 +43,28 @@ export function CreateAccountForm({ onSubmit }: CreateAccountFormProps) {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm<CreateAccountInput>({ resolver, mode: 'onSubmit' });
+  const [username, setUserName] = useState<string | undefined>();
+  function updateUserName(value: string) {
+    setUserName(value);
+    setValue('username', value);
+  }
+  const [email, setEmail] = useState<string | undefined>();
+  function updateEmail(value: string) {
+    setEmail(value);
+    setValue('email', value);
+  }
+  const [password1, setPassword1] = useState<string | undefined>();
+  function updatePassword1(value: string) {
+    setPassword1(value);
+    setValue('password1', value);
+  }
+  const [password2, setPassword2] = useState<string | undefined>();
+  function updatePassword2(value: string) {
+    setPassword2(value);
+    setValue('password2', value);
+  }
   return (
     <Wrapper onSubmit={onSubmit && handleSubmit(onSubmit)}>
       <Title>Create account</Title>
@@ -53,6 +75,8 @@ export function CreateAccountForm({ onSubmit }: CreateAccountFormProps) {
           error={!!errors.username}
           helperText={errors.username?.message}
           aria-invalid={!!errors.username}
+          value={username}
+          onChangeText={updateUserName}
         />
       </FormItem>
       <FormItem>
@@ -62,6 +86,8 @@ export function CreateAccountForm({ onSubmit }: CreateAccountFormProps) {
           error={!!errors.email}
           helperText={errors.email?.message}
           aria-invalid={!!errors.email}
+          value={email}
+          onChangeText={updateEmail}
         />
       </FormItem>
       <FormItem>
@@ -71,6 +97,8 @@ export function CreateAccountForm({ onSubmit }: CreateAccountFormProps) {
           error={!!errors.password1}
           helperText={errors.password1?.message}
           aria-invalid={!!errors.password1}
+          value={password1}
+          onChangePassword={updatePassword1}
         />
       </FormItem>
       <FormItem>
@@ -80,10 +108,12 @@ export function CreateAccountForm({ onSubmit }: CreateAccountFormProps) {
           error={!!errors.password2}
           helperText={errors.password2?.message}
           aria-invalid={!!errors.password2}
+          value={password2}
+          onChangePassword={updatePassword2}
         />
       </FormItem>
       <ButtonWrapper>
-        <Button>NEXT</Button>
+        <Button type="submit">NEXT</Button>
       </ButtonWrapper>
     </Wrapper>
   );

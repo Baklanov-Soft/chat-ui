@@ -1,8 +1,10 @@
 import { Meta, Story } from '@storybook/react';
 import styled from 'styled-components';
-import { CreateAccountForm } from './CreateAccountForm';
+import { CreateAccountForm, CreateAccountFormProps } from './CreateAccountForm';
 
-const Template: Story = (args) => <CreateAccountForm {...args} />;
+const Template: Story<CreateAccountFormProps> = (args) => (
+  <CreateAccountForm {...args} />
+);
 
 export const Primary = Template.bind({});
 

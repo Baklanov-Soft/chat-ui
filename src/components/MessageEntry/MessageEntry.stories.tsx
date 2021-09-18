@@ -1,6 +1,6 @@
 import { Meta, Story } from '@storybook/react';
-import { MessageEntry, MessageEntryProps } from './MessageEntry';
 import styled from 'styled-components';
+import { MessageEntry, MessageEntryProps } from './MessageEntry';
 
 const Template: Story<MessageEntryProps> = (args) => <MessageEntry {...args} />;
 
@@ -9,8 +9,7 @@ Primary.args = {
   avatar:
     'https://3.bp.blogspot.com/-yTF-5A3kAH8/WlCLjrizoeI/AAAAAAAC68Q/BxEnavDjqWYLI22b2rTOdA6wVUIwEIkjACLcBGAs/s1600/dfgh.jpg',
   user: 'Rarity',
-  text:
-    'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequatur, voluptatum illo at accusantium maiores ratione?',
+  text: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequatur, voluptatum illo at accusantium maiores ratione?',
   ts: new Date(1624464230),
 };
 

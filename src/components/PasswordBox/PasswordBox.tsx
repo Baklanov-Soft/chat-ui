@@ -1,4 +1,4 @@
-import type { ChangeEventHandler } from 'react';
+import type { ChangeEvent, ChangeEventHandler } from 'react';
 import { useState } from 'react';
 import type {
   ChangeHandler,
@@ -45,6 +45,8 @@ export type PasswordBoxProps = {
   placeholder?: string;
   error?: boolean;
   helperText?: string;
+  value?: string | ReadonlyArray<string> | number;
+  onChangePassword?: (s: string) => void;
   onChange?: ChangeEventHandler<HTMLInputElement>;
   onBlur?: ChangeHandler;
   ref?: RefCallBack;
@@ -54,21 +56,30 @@ export type PasswordBoxProps = {
 export function PasswordBox({
   error,
   helperText,
+  placeholder,
+  onChangePassword,
   onChange,
   onBlur,
   ref,
   name,
+  value,
 }: PasswordBoxProps) {
   const [visible, setVisible] = useState(false);
+  function onChangeInternal(e: ChangeEvent<HTMLInputElement>) {
+    onChangePassword?.(e.target.value);
+    onChange?.(e);
+  }
   return (
     <Wrapper>
       <Input
         type={visible ? 'text' : 'password'}
         error={error}
-        onChange={onChange}
+        onChange={onChangeInternal}
         onBlur={onBlur}
         ref={ref}
         name={name}
+        placeholder={placeholder}
+        value={value}
       />
       <Adornment>
         <EyeToggle
