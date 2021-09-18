@@ -1,4 +1,4 @@
-import type { ChangeEventHandler } from 'react';
+import type { ChangeEvent, ChangeEventHandler } from 'react';
 import type {
   ChangeHandler,
   InternalFieldName,
@@ -37,6 +37,7 @@ export type TextblockProps = {
   error?: boolean;
   helperText?: string;
   value?: string | ReadonlyArray<string> | number;
+  onChangeText?: (s: string) => void;
   onChange?: ChangeEventHandler<HTMLInputElement>;
   onBlur?: ChangeHandler;
   ref?: RefCallBack;
@@ -47,18 +48,23 @@ export function Textbox({
   value,
   error,
   helperText,
+  onChangeText,
   onChange,
   onBlur,
   ref,
   name,
 }: TextblockProps) {
+  function onChangeInternal(e: ChangeEvent<HTMLInputElement>) {
+    onChangeText?.(e.target.value);
+    onChange?.(e);
+  }
   return (
     <Wrapper>
       <Input
         type="text"
         error={error}
         value={value}
-        onChange={onChange}
+        onChange={onChangeInternal}
         onBlur={onBlur}
         ref={ref}
         name={name}

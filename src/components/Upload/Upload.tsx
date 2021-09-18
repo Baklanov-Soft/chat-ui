@@ -22,6 +22,7 @@ const LabelWrapper = styled.label`
 export type UploadProps = {
   accept?: string;
   children: string;
+  onFileChange?: (f: File) => void;
   onChange?: ChangeEventHandler<HTMLInputElement>;
   onBlur?: ChangeHandler;
   ref?: RefCallBack;
@@ -31,16 +32,18 @@ export type UploadProps = {
 export function Upload({
   accept,
   children,
+  onFileChange,
   onChange,
   onBlur,
   ref,
   name,
 }: UploadProps) {
-  const [file, setFile] = useState<File>();
-  function onFileChange(e: ChangeEvent<HTMLInputElement>) {
+  const [fileName, setFileName] = useState<string>();
+  function onChangeInternal(e: ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
     if (file) {
-      setFile(file);
+      setFileName(file.name);
+      onFileChange?.(file);
       onChange?.(e);
     }
   }
@@ -49,12 +52,12 @@ export function Upload({
       <input
         type="file"
         accept={accept}
-        onChange={onFileChange}
+        onChange={onChangeInternal}
         onBlur={onBlur}
         ref={ref}
         name={name}
       />
-      {file ? file.name : children}
+      {fileName ? fileName : children}
     </LabelWrapper>
   );
 }
