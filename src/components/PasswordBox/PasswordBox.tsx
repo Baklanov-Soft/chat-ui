@@ -1,4 +1,10 @@
+import type { ChangeEventHandler } from 'react';
 import { useState } from 'react';
+import type {
+  ChangeHandler,
+  InternalFieldName,
+  RefCallBack,
+} from 'react-hook-form';
 import styled from 'styled-components';
 import { EyeToggle } from '../EyeToggle';
 import { TextboxWarning } from '../TextboxWarning';
@@ -39,13 +45,31 @@ export type PasswordBoxProps = {
   placeholder?: string;
   error?: boolean;
   helperText?: string;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
+  onBlur?: ChangeHandler;
+  ref?: RefCallBack;
+  name?: InternalFieldName;
 };
 
-export function PasswordBox({ error, helperText, ...rest }: PasswordBoxProps) {
+export function PasswordBox({
+  error,
+  helperText,
+  onChange,
+  onBlur,
+  ref,
+  name,
+}: PasswordBoxProps) {
   const [visible, setVisible] = useState(false);
   return (
     <Wrapper>
-      <Input {...rest} type={visible ? 'text' : 'password'} error={error} />
+      <Input
+        type={visible ? 'text' : 'password'}
+        error={error}
+        onChange={onChange}
+        onBlur={onBlur}
+        ref={ref}
+        name={name}
+      />
       <Adornment>
         <EyeToggle
           dim="18px"

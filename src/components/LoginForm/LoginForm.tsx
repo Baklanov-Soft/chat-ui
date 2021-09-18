@@ -33,7 +33,7 @@ const Footer = styled.div`
   width: 100%;
 `;
 
-const LinkWrapper = styled(Link)`
+const CreateAccountButton = styled(Link)`
   font-size: 14px;
 `;
 
@@ -76,7 +76,9 @@ export function LoginForm({ onCreateAccountClick, onSubmit }: LoginFormProps) {
         />
       </FormItem>
       <Footer>
-        <LinkWrapper onClick={onCreateAccountClick}>Create account</LinkWrapper>
+        <CreateAccountButton onClick={onCreateAccountClick}>
+          Create account
+        </CreateAccountButton>
         <Button type="submit">NEXT</Button>
       </Footer>
     </Wrapper>

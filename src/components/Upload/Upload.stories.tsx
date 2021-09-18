@@ -11,4 +11,7 @@ Primary.args = {
 export default {
   title: 'Upload',
   component: Upload,
+  argTypes: {
+    onChange: { action: 'click' },
+  },
 } as Meta;

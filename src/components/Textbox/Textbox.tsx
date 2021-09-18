@@ -1,3 +1,9 @@
+import type { ChangeEventHandler } from 'react';
+import type {
+  ChangeHandler,
+  InternalFieldName,
+  RefCallBack,
+} from 'react-hook-form';
 import styled from 'styled-components';
 import { TextboxWarning } from '../TextboxWarning';
 
@@ -30,12 +36,33 @@ export type TextblockProps = {
   placeholder?: string;
   error?: boolean;
   helperText?: string;
+  value?: string | ReadonlyArray<string> | number;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
+  onBlur?: ChangeHandler;
+  ref?: RefCallBack;
+  name?: InternalFieldName;
 };
 
-export function Textbox({ error, helperText, ...rest }: TextblockProps) {
+export function Textbox({
+  value,
+  error,
+  helperText,
+  onChange,
+  onBlur,
+  ref,
+  name,
+}: TextblockProps) {
   return (
     <Wrapper>
-      <Input {...rest} type="text" error={error} />
+      <Input
+        type="text"
+        error={error}
+        value={value}
+        onChange={onChange}
+        onBlur={onBlur}
+        ref={ref}
+        name={name}
+      />
       {error && helperText && <TextboxWarning text={helperText} />}
     </Wrapper>
   );
