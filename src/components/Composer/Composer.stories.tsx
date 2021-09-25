@@ -1,21 +1,21 @@
 import { Meta, Story } from '@storybook/react';
 import styled from 'styled-components';
-import { TextArea, TextAreaProps } from './TextArea';
+import { Composer, ComposerProps } from './Composer';
 
-const Template: Story<TextAreaProps> = (args) => <TextArea {...args} />;
+const Template: Story<ComposerProps> = (args) => <Composer {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-  text: 'hello world',
+  text: '',
 };
 
 const WidthDecorator = styled.div`
-  width: 300px;
+  width: 500px;
 `;
 
 export default {
-  title: 'TextArea',
-  component: TextArea,
+  title: 'Composer',
+  component: Composer,
   decorators: [
     (Story) => (
       <WidthDecorator>
@@ -25,5 +25,6 @@ export default {
   ],
   argTypes: {
     onSend: { action: 'send' },
+    setText: { action: 'input' },
   },
 } as Meta;

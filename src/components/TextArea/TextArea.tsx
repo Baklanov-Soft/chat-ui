@@ -1,5 +1,4 @@
-import type { KeyboardEvent } from 'react';
-import { useLayoutEffect, useRef } from 'react';
+import { FC, KeyboardEvent, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
 const TextAreaWrapper = styled.div<{ maxHeight: number }>`
@@ -37,22 +36,31 @@ const TextAreaWrapper = styled.div<{ maxHeight: number }>`
 `;
 
 export type TextAreaProps = {
-  html: string;
-  maxHeight?: number;
+  text: string;
+  setText: (s: string) => void;
   onSend?: () => void;
+  maxHeight?: number;
 };
 
-export function TextArea({ html, maxHeight, onSend }: TextAreaProps) {
+export const TextArea: FC<TextAreaProps> = ({
+  text,
+  setText,
+  onSend,
+  maxHeight,
+}) => {
   const divRef = useRef<HTMLDivElement>(null);
 
-  useLayoutEffect(() => {
-    if (divRef.current!.innerHTML !== html) {
-      divRef.current!.innerHTML = html;
+  useEffect(() => {
+    if (divRef.current!.textContent !== text) {
+      divRef.current!.textContent = text;
     }
-  }, [html]);
+  }, [text]);
 
-  function onChange() {
-    focusEditableElement(divRef.current!);
+  function onInput() {
+    if (divRef.current?.textContent) {
+      setText(divRef.current.textContent);
+      focusEditableElement(divRef.current);
+    }
   }
 
   function onKeyDown(e: KeyboardEvent<HTMLDivElement>) {
@@ -69,12 +77,12 @@ export function TextArea({ html, maxHeight, onSend }: TextAreaProps) {
       aria-multiline="false"
       placeholder="write a message..."
       ref={divRef}
-      maxHeight={maxHeight ? maxHeight : 100}
-      onChange={onChange}
+      maxHeight={maxHeight || 100}
+      onInput={onInput}
       onKeyDown={onKeyDown}
     />
   );
-}
+};
 
 function focusEditableElement(element: HTMLElement) {
   const selection = window.getSelection()!;
