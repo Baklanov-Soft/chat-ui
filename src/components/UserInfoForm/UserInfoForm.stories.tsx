@@ -1,25 +1,26 @@
 import { Meta, Story } from '@storybook/react';
 import styled from 'styled-components';
-import { MessageEntry, MessageEntryProps } from './MessageEntry';
+import { UserInfoForm, UserInfoFormProps } from './UserInfoForm';
 
-const Template: Story<MessageEntryProps> = (args) => <MessageEntry {...args} />;
+const Template: Story<UserInfoFormProps> = (args) => <UserInfoForm {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-  avatar:
+  avatarSource:
     'https://3.bp.blogspot.com/-yTF-5A3kAH8/WlCLjrizoeI/AAAAAAAC68Q/BxEnavDjqWYLI22b2rTOdA6wVUIwEIkjACLcBGAs/s1600/dfgh.jpg',
-  user: 'Rarity',
-  text: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequatur, voluptatum illo at accusantium maiores ratione?',
-  ts: new Date(1624464230),
+  username: 'JohnDoe',
+  email: 'jdoe@gmail.com',
+  firstName: 'John',
+  lastName: 'Doe',
 };
 
 const WidthDecorator = styled.div`
-  width: 600px;
+  width: 500px;
 `;
 
 export default {
-  title: 'Message entry',
-  component: MessageEntry,
+  title: 'forms/UserInfoForm',
+  component: UserInfoForm,
   decorators: [
     (Story) => (
       <WidthDecorator>
@@ -28,6 +29,7 @@ export default {
     ),
   ],
   argTypes: {
-    onSelected: { action: 'selection changed' },
+    onCancel: { action: 'click' },
+    onSave: { action: 'click' },
   },
 } as Meta;

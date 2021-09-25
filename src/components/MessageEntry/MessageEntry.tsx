@@ -5,7 +5,6 @@ const Wrapper = styled.div`
   display: flex;
   padding: 8px;
   font-size: 16px;
-  width: 600px;
 `;
 
 const AvatarWrapper = styled.div<

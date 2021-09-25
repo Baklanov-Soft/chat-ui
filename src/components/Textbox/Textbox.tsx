@@ -1,10 +1,16 @@
+import type { ChangeEvent, ChangeEventHandler } from 'react';
+import type {
+  ChangeHandler,
+  InternalFieldName,
+  RefCallBack,
+} from 'react-hook-form';
 import styled from 'styled-components';
 import { TextboxWarning } from '../TextboxWarning';
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 230px;
+  width: 100%;
 `;
 
 const Input = styled.input<{ error?: boolean }>`
@@ -30,12 +36,41 @@ export type TextblockProps = {
   placeholder?: string;
   error?: boolean;
   helperText?: string;
+  value?: string | ReadonlyArray<string> | number;
+  onChangeText?: (s: string) => void;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
+  onBlur?: ChangeHandler;
+  ref?: RefCallBack;
+  name?: InternalFieldName;
 };
 
-export function Textbox({ placeholder, error, helperText }: TextblockProps) {
+export function Textbox({
+  value,
+  error,
+  helperText,
+  placeholder,
+  onChangeText,
+  onChange,
+  onBlur,
+  ref,
+  name,
+}: TextblockProps) {
+  function onChangeInternal(e: ChangeEvent<HTMLInputElement>) {
+    onChangeText?.(e.target.value);
+    onChange?.(e);
+  }
   return (
     <Wrapper>
-      <Input type="text" placeholder={placeholder} error={error} />
+      <Input
+        type="text"
+        error={error}
+        value={value}
+        placeholder={placeholder}
+        onChange={onChangeInternal}
+        onBlur={onBlur}
+        ref={ref}
+        name={name}
+      />
       {error && helperText && <TextboxWarning text={helperText} />}
     </Wrapper>
   );

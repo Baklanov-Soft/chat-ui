@@ -19,9 +19,15 @@ const Wrapper = styled.button`
 `;
 
 export type ButtonProps = {
-  text: string;
+  children: string;
+  onClick?: () => void;
+  type?: 'button' | 'submit' | 'reset';
 };
 
-export function Button({ text }: ButtonProps) {
-  return <Wrapper>{text.toUpperCase()}</Wrapper>;
+export function Button({ children, onClick, type }: ButtonProps) {
+  return (
+    <Wrapper onClick={onClick} type={type}>
+      {children}
+    </Wrapper>
+  );
 }
