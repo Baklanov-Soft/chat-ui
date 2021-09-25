@@ -1,15 +1,16 @@
+import { ReactNode } from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.button`
-  height: 30px;
-  width: 110px;
+  padding: 6px 32px;
   font-size: 14px;
   border-radius: 2px;
   border: 0;
   background-color: #0077c2;
-  color: #ffffff;
+  color: #fff;
   letter-spacing: 1px;
   cursor: pointer;
+  overflow: hidden;
   &:hover {
     background-color: #1492e1;
   }
@@ -19,7 +20,7 @@ const Wrapper = styled.button`
 `;
 
 export type ButtonProps = {
-  children: string;
+  children: ReactNode;
   onClick?: () => void;
   type?: 'button' | 'submit' | 'reset';
 };

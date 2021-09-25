@@ -24,7 +24,7 @@ const FormItem = styled.div`
 
 const ButtonWrapper = styled.div`
   align-self: flex-end;
-  padding: 16px 0;
+  padding: 16px 8px;
 `;
 
 export type CreateAccountFormProps = {
