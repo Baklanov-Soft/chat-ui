@@ -7,10 +7,12 @@ const TextAreaWrapper = styled.div<{ maxHeight: number }>`
   font-size: 14px;
   border-radius: 2px;
   border: 2px solid #808d94;
+  transition: border-color 0.3s;
   max-height: ${({ maxHeight }) => maxHeight}px;
   overflow-y: auto;
   &:hover {
     border-color: #000;
+    transition: border-color 0.3s;
   }
   &:focus {
     color: #000000;
