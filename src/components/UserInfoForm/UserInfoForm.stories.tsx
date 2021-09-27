@@ -14,6 +14,11 @@ Primary.args = {
   lastName: 'Doe',
 };
 
+export const Empty = Template.bind({});
+Empty.args = {
+  username: 'JaneDoe',
+};
+
 const WidthDecorator = styled.div`
   width: 500px;
 `;

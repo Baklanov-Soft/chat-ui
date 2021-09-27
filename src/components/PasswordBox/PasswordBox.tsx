@@ -22,11 +22,13 @@ const Input = styled.input<{ error?: boolean }>`
   font-size: 14px;
   ${({ error }) =>
     error ? `border: 2px solid #c31313;` : `border: 2px solid #808d94;`}
+  transition: border-color 0.3s;
   ::placeholder {
     color: #808d94;
   }
   &:hover {
-    border-color: #000000;
+    border-color: #000;
+    transition: border-color 0.3s;
   }
   &:focus {
     color: #000000;

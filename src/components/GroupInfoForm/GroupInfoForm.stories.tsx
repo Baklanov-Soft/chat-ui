@@ -16,17 +16,19 @@ Primary.args = {
   members: [
     {
       id: 'q',
-      avatar: 'https://pbs.twimg.com/media/EmeZZQxU4AAKDYx.jpg',
+      avatar:
+        'https://cdn.iconscout.com/icon/free/png-256/boy-avatar-4-1129037.png',
       name: 'booba',
     },
     {
       id: 'w',
-      avatar: 'https://pbs.twimg.com/media/EmeZZQxU4AAKDYx.jpg',
+      avatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png',
       name: 'booba',
     },
     {
       id: 'e',
-      avatar: 'https://pbs.twimg.com/media/EmeZZQxU4AAKDYx.jpg',
+      avatar:
+        'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/21760012/original/d4c0c142f91f012c9a8a9c9aeef3bac28036f15b/create-your-cartoon-style-flat-avatar-or-icon.jpg',
       name: 'booba',
     },
   ],

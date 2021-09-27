@@ -30,7 +30,7 @@ const FormItem = styled.div`
 const Footer = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 16px 0;
+  padding: 16px 8px;
   width: 100%;
 `;
 
